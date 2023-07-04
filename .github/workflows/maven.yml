@@ -30,9 +30,6 @@ jobs:
     - name: Bump Version
       id: bump
       uses: 'mickem/gh-action-bump-maven-version@v1.0.0'
-      with:
-        github-token: ${{ secrets.github_token }}
-        pom-file:  'myapp/pom.xml'
 
     - name: Print Version
       run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
