@@ -29,9 +29,10 @@ jobs:
         cache: maven
     - name: Bump Version
       id: bump
-      uses: nnichols/maven-version-bump-action@v3
+      uses: nnichols/maven-version-bump-action@v3 
       with:
         github-token: ${{ secrets.github_token }}
+        pom-file:  'myapp/pom.xml'
 
     - name: Print Version
       run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
