@@ -57,7 +57,7 @@ jobs:
           path: myapp/target/*.jar
           
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: uubuntu-latest
     needs: build
 
     steps:
