@@ -71,7 +71,7 @@ jobs:
           path: target/
     - name: Docker build
       run: |
-        docker build . -t rivkarom/myapp:${{needs.build.outputs.jar_version}}
+        docker build . -t rivkarom/myapp:${{steps.build.outputs.jar_version}}
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
@@ -80,7 +80,7 @@ jobs:
 
     - name: Docker push
       run: |
-        docker push rivkarom/myapp:${{needs.build.outputs.jar_version}}
+        docker push rivkarom/myapp:${{steps.build.outputs.jar_version}}
   run:
     runs-on: ubuntu-latest
     needs: [build, deploy]
@@ -88,5 +88,5 @@ jobs:
     steps:
     - name: Run container
       run: |
-        docker run rivkarom/myapp:${{needs.build.outputs.jar_version}}
+        docker run rivkarom/myapp:${{steps.build.outputs.jar_version}}
 
