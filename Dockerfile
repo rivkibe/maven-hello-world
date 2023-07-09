@@ -1,7 +1,7 @@
 FROM maven:3 as build_image
 COPY myapp /myapp
 WORKDIR /myapp
-RUN mvn -B package -e -X
+RUN mvn clean package
 
 FROM openjdk:11.0.6-jre-buster
 COPY --from=build_image /myapp/target/myapp*.jar app.jar
