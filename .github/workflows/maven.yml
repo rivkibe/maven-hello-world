@@ -38,7 +38,6 @@ jobs:
       run: |
         POMPATH=myapp
         OLD_VERSION=$(cd $POMPATH && mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-        BUMP_MODE="none"
         old="$OLD_VERSION"
         parts=( ${old//./ } )
         bv=$((parts[2] + 1))
